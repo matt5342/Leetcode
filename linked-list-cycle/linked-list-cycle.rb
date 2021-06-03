@@ -10,20 +10,20 @@
 # @param {ListNode} head
 # @return {Boolean}
 def hasCycle(head)
-    @visited = {}
-    node = head
-    while !@visited[node]
-        check_next(node)
-        if !node || !node.next
+    if !head || !head.next
+        return false
+    end
+    slow = head
+    fast = head.next
+    
+    while slow != fast
+        if !fast.next || !fast.next.next
             return false
-        else
-            node = node.next
         end
+        slow = slow.next
+        fast = fast.next.next
     end
     return true
-end
     
-def check_next(node)
-    @visited[node] = true
     
 end
